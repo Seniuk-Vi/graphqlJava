@@ -11,7 +11,6 @@ import org.brain.service.FolderService;
 import org.brain.service.UserService;
 
 import java.util.List;
-import java.util.Map;
 
 public class DataFetchers {
     private final UserService userService;
