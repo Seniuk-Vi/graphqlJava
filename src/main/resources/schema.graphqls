@@ -1,0 +1,39 @@
+type Query {
+    users: [User!]!
+    userById(id: ID!): User
+}
+
+type Mutation {
+    createUser(input: CreateUserInput!): User
+    createFolder(userId: ID!, folderName: String!): Folder
+    createFile(folderId: ID!, input: CreateFileInput!): File
+}
+
+type User {
+    id: ID!
+    name: String!
+    folders: [Folder]
+}
+
+type Folder {
+    id: ID!
+    name: String!
+    files: [File]
+}
+
+type File {
+    id: ID!
+    name: String!
+    size: Int!
+    description: String
+}
+
+input CreateUserInput {
+    name: String!
+}
+
+input CreateFileInput {
+    name: String!
+    size: Int!
+    description: String
+}

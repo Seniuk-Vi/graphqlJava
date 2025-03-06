@@ -1,0 +1,23 @@
+[
+  {
+    "id": "201",
+    "folderId": "101",
+    "name": "file1.txt",
+    "size": 1024,
+    "description": "Alice's document"
+  },
+  {
+    "id": "202",
+    "folderId": "101",
+    "name": "file2.txt",
+    "size": 2048,
+    "description": "Another document"
+  },
+  {
+    "id": "203",
+    "folderId": "103",
+    "name": "work_presentation.ppt",
+    "size": 5120,
+    "description": "Work presentation"
+  }
+]
