@@ -1,4 +1,5 @@
 package org.brain.fetcher;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.schema.DataFetcher;
 import org.brain.model.File;
 import org.brain.model.Folder;
@@ -16,6 +17,8 @@ public class DataFetchers {
     private final UserService userService;
     private final FolderService folderService;
     private final FileService fileService;
+
+    ObjectMapper objectMapper = new ObjectMapper();
 
     public DataFetchers(UserService userService, FolderService folderService, FileService fileService) {
         this.userService = userService;
@@ -70,7 +73,8 @@ public class DataFetchers {
         return environment -> {
             System.out.println("DataFetchers.createUserFetcher");
 
-            CreateUserInput input = environment.getArgument("input");
+            Object inputMap = environment.getArgument("input");
+            CreateUserInput input = objectMapper.convertValue(inputMap, CreateUserInput.class);
 
             String name = input.getName();
 
@@ -96,7 +100,9 @@ public class DataFetchers {
             // Get the folderId argument
             String folderId = environment.getArgument("folderId");
 
-            CreateFileInput input = environment.getArgument("input");
+            Object inputMap = environment.getArgument("input");
+
+            CreateFileInput input = objectMapper.convertValue(inputMap, CreateFileInput.class);
 
             String name = input.getName();
             int size = input.getSize();
